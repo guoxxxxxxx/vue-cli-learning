@@ -1,6 +1,6 @@
 // 组件的结构
 <template>
-    <div class="school">
+    <div class="student">
         <h2>学校姓名: {{name}}</h2>
         <h2>学校地址: {{age}}</h2>
         <button @click="showName">点我提示学生姓名</button>
@@ -26,7 +26,7 @@ export default {
 
 // 组件的样式
 <style>
-    .school{
+    .student{
         background-color: aqua;
     }
 </style>
