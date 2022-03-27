@@ -31,11 +31,7 @@ export default {
   },
   data() {
     return {
-      todos:[
-        {id: '001', title: '吃饭', completed: false},
-        {id: '002', title: '睡觉', completed: true},
-        {id: '003', title: '学习', completed: false},
-      ]
+      todos:JSON.parse(localStorage.getItem('todos')) || []
     }
   },
   methods:{
