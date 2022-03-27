@@ -4,7 +4,7 @@
       <input type="checkbox" :checked="item.completed" @change="handleCheck(item)"/>
       <span>{{index+1}} . {{item.title}}</span>
     </label>
-      <button class="btn btn-danger" style="display: none">删除</button>
+      <button class="btn btn-danger" @click="handleDelete(item.id)">删除</button>
   </li>
 </template>
 
@@ -15,11 +15,18 @@ export default {
     item:{},
     index:{},
     changeStatus:{},
+    deleteTodo:{},
   },
   methods:{
     handleCheck(item){
-      console.log(item);
+      // console.log(item);
       this.changeStatus(item);
+    },
+    handleDelete(id){
+      if(confirm('确定删除吗?')){
+        this.deleteTodo(id);
+        console.log(id);
+      }
     }
   }
 };
@@ -59,5 +66,13 @@ li:before {
 
 li:last-child {
   border-bottom: none;
+}
+
+li:hover{
+  background-color: #ddd;
+}
+
+li:hover button{
+  display: block;
 }
 </style>

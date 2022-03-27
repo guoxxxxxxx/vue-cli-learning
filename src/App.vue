@@ -3,8 +3,16 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <header-component :receive="receive" />
-        <list-component :todos="todos" :changeStatus='changeStatus'/>
-        <footer-component />
+        <list-component 
+          :todos="todos" 
+          :changeStatus='changeStatus'
+          :deleteTodo='deleteTodo'
+        />
+        <footer-component 
+          :todos='todos'
+          :clearAchieve='clearAchieve'
+          :selectAllItem='selectAllItem'
+        />
       </div>
     </div>
   </div>
@@ -38,6 +46,24 @@ export default {
     // 勾选/取消勾选一个项目
     changeStatus(item){
       item.completed = !item.completed;
+    },
+    // 删除项目
+    deleteTodo(id){
+      this.todos = this.todos.filter((todo)=>{
+        return todo.id != id;
+      })
+    },
+    // 删除所有已完成项目
+    clearAchieve(){
+      this.todos = this.todos.filter((todo)=>{
+        return !todo.completed;
+      })
+    },
+    // 勾选全部项目
+    selectAllItem(status){
+      this.todos.forEach(e=>{
+        e.completed = !status;
+      })
     }
   }
 };

@@ -5,6 +5,7 @@
       :key="item.id" :item="item" 
       :index="index" 
       :changeStatus='changeStatus'
+      :deleteTodo='deleteTodo'
     />
   </ul>
 </template>
@@ -19,6 +20,7 @@ export default {
   props:{
     todos:{},
     changeStatus:{},
+    deleteTodo:{},
   }
 };
 </script>

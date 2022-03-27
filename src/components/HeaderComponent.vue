@@ -21,7 +21,7 @@ export default {
         return;
       } 
       // 将用户的输入包装成一个todo对象
-      const obj = {id: nanoid(), title:this.title, done:false};
+      const obj = {id: nanoid(), title:this.title, completed:false};
       this.receive(obj);      
     }
   },
