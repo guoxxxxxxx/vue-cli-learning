@@ -115,3 +115,26 @@ this.$refs.xxx
    3. xxxxStorage.getItem(xxx)如果xxx对应的Value获取不到,那么getItem的返回值是null
    4. JSON.parse(null)的结果依然是null。
 ```
+
+
+
+## 组件的自定义事件
+
+```
+1. 一种组件间通信的方式, 适用于：子组件 ===> 父组件
+2. 使用场景: A是父组件,B是子组件，B想给A传递数据, 那么就要在A中给B绑定自定义事件.
+3. 绑定自定义事件
+	(1). 方式一: 在父组件中<Demo @atguigu='test'/>或<Demo v-on:atguigu='test'/>
+	(2). 方式二: 在父组件中
+	<Demo ref='demo'/>
+	
+	mounted(){
+		this.$ref.xxx.$on('atguigu', this.test)
+	}
+	注： 若想让自定义事件只触发一次, 可以使用once修饰符, 或$once方法
+4. 触发自定义事件: this.$emit('atguigu', 数据)
+5. 解绑自定义事件this.$off('atguigu')
+6. 组件上也可以绑定原生DOM事件，需要添加native修饰
+7. 注意: 通过this.$refs.xxx.$on('atguigu', 回调)绑定自定义事件时, 回调要么配置在methods中, 要么用箭头函数,fou'z
+```
+
