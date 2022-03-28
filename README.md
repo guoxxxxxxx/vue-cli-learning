@@ -165,3 +165,22 @@ this.$refs.xxx
 4. 最好在beforeDestroy钩子中, 用$off去解绑当前组件所用到的事件。
 ```
 
+
+
+## 消息订阅与发布(pubsub)
+
+```
+1. 这是一种组件间通信方式, 适用于任意组件间通信
+2. 引入 import pubsub from 'pubsub-js'
+3. 接收数据: A组件想接收数据, 则在A组件中订阅消息，订阅的回调留在A组件自身。
+	methods(){
+		demo(data){...}
+	}
+	...
+	mounted(){
+		this.pid = pubsub.subscribe('xxx', this.demo)
+	}
+4. 提供数据: pubsub.publish('xxx', 数据)
+5. 最好在beforeDestory钩子中, 用pubsub.unsubscribe(pid)q
+```
+
